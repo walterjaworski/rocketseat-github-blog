@@ -4,10 +4,16 @@ import ReactMarkdown from 'react-markdown'
 
 export const Container = styled(ReactMarkdown)`
   color: ${({ theme }) => theme.colors.base.text};
-  margin-bottom: 2rem;
+  margin: 2rem 0;
+  padding: 0 2.5rem;
 
   * {
-    margin: 1rem 0;
+    margin: 0 0 1.5rem;
+  }
+
+  ul {
+    list-style-position: outside;
+    margin: 0 2.5rem;
   }
 
   h1,

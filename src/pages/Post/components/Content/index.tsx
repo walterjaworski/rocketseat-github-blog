@@ -5,6 +5,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 import * as S from './styles'
+import { IssueProps } from '../..'
 
 interface CodeProps {
   node: ReactNode
@@ -13,7 +14,8 @@ interface CodeProps {
   children: ReactNode
 }
 
-export function Content() {
+export function Content({ body }: IssueProps) {
+  console.log({ body })
   const content = `# A Importância do HTML para o Desenvolvimento Web
   O HTML (HyperText Markup Language) é a espinha dorsal de qualquer site na Internet. Ele fornece a estrutura básica e os elementos necessários para exibir conteúdo na web. Sem o HTML, não teríamos páginas da web como conhecemos hoje.
   ## O que é HTML?
@@ -52,7 +54,7 @@ export function Content() {
 
   return (
     <S.Container remarkPlugins={[remarkGfm]} components={{ code: Code }}>
-      {content}
+      {body}
     </S.Container>
   )
 }

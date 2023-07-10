@@ -3,7 +3,14 @@ import { styled } from 'styled-components'
 export const Container = styled.article`
   background: ${({ theme }) => theme.colors.base.post};
   border-radius: 10px;
+  border: 1px solid transparent;
   padding: 2rem;
+
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.base.text};
+  }
+
+  cursor: pointer;
 `
 
 export const Header = styled.header`
@@ -14,14 +21,18 @@ export const Header = styled.header`
   h3 {
     font-size: 1.25rem;
     font-weight: bold;
-    color: ${({ theme }) => theme.colors.base.title};
     line-height: 160%;
-    flex: 1;
+
+    a {
+      text-decoration: none;
+      color: ${({ theme }) => theme.colors.base.title};
+    }
   }
 
   span {
     font-size: 0.875rem;
     color: ${({ theme }) => theme.colors.base.span};
+    text-align: right;
   }
 `
 
@@ -30,7 +41,11 @@ export const Main = styled.main`
 
   p {
     font-size: 1rem;
-    color: ${({ theme }) => theme.colors.base.text};
     line-height: 160%;
+
+    a {
+      text-decoration: none;
+      color: ${({ theme }) => theme.colors.base.text};
+    }
   }
 `

@@ -1,22 +1,34 @@
-import { TruncatedText } from '../../../../utils/truncateWithCss'
+/* eslint-disable camelcase */
+import { useNavigate } from 'react-router-dom'
+import {
+  formatRelativeDate,
+  truncateTextWithEllipsis,
+} from '../../../../utils/formatter'
+
 import * as S from './styles'
 
-export function Post() {
+interface PostProps {
+  number: number
+  title: string
+  body: string
+  created_at: string
+}
+
+export function Post({ number, title, body, created_at }: PostProps) {
+  const navigate = useNavigate()
+
+  function handleClickGoToPost() {
+    navigate(`/${number}`)
+  }
+
   return (
-    <S.Container>
+    <S.Container onClick={handleClickGoToPost}>
       <S.Header>
-        <h3>JavaScript data types and data structures</h3>
-        <span>Há 1 dia</span>
+        <h3>{title}</h3>
+        <span>{formatRelativeDate(created_at)}</span>
       </S.Header>
       <S.Main>
-        <TruncatedText maxLines={4}>
-          Programming languages all have built-in data structures, but these
-          often differ from one language to another. This article attempts to
-          list the built-in data structures available in JavaScript and what
-          properties they have. These can be used to build other data
-          structures. Wherever possible, comparisons with other languages are
-          drawn.
-        </TruncatedText>
+        <p>{truncateTextWithEllipsis(body, 200)}</p>
       </S.Main>
     </S.Container>
   )
